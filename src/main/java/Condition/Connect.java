@@ -8,13 +8,13 @@ import java.sql.*;
 public class Connect {
     public static Connection co() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        String aa = "jdbc:mysql://localhost:3306/Test";
+        String url ="jdbc:mysql://localhost:3306/Test";
         String root = "root";
         String password = "20021111aA#";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(aa, root, password);
+        return DriverManager.getConnection(url, root, password);
     }
     public static void close(ResultSet rr, Statement stmt, Connection coon)  {
+        /*以下代码，关闭的规则为，哪个曾经被使用过，不为null，就关闭哪个*/
         if(stmt!=null)
         {
             try {

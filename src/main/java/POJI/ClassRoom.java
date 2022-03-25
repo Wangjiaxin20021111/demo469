@@ -4,8 +4,10 @@ package POJI;
  * @author 25043
  */
 public class ClassRoom {
-    String roomNum;
-    String testNum;
+    /**考试场地编号*/
+    private String roomNum;
+    /**试卷编号*/
+    private String testNum;
 
     public String getTestNum() {
         return testNum;

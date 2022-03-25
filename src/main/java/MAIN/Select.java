@@ -1,7 +1,9 @@
 package MAIN;
 
 import java.sql.SQLException;
-@SuppressWarnings("all")
+/**
+ * @author 25043
+ */
 public interface Select {
     void select() throws SQLException, ClassNotFoundException;
 }

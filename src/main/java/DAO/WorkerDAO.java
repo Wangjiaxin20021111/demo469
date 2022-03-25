@@ -14,12 +14,14 @@ public class WorkerDAO {
     Statement stmt=null;
     ResultSet rr=null;
     PreparedStatement ptsmt=null;
+    ArrayList<ClassRoom> list=null;
     public int insert(String sql, String roomNum, String testNum)
     {
         try {
              int a;
              coon= Connect.co();
              stmt=coon.createStatement();
+             /*预处理sql语句*/
              ptsmt=coon.prepareStatement(sql);
              ptsmt.setString(1,roomNum);
              ptsmt.setString(2,testNum);
@@ -27,6 +29,7 @@ public class WorkerDAO {
              return a;
         }catch (Exception e)
         {
+            /*出现异常返回0*/
             e.printStackTrace();
             return 0;
         }
@@ -37,12 +40,13 @@ public class WorkerDAO {
 
     public ArrayList<ClassRoom> check(String sql,String roomNum) {
         try {
-            ArrayList<ClassRoom> list=new ArrayList<>();
+            list=new ArrayList<>();
             coon=Connect.co();
             stmt=coon.createStatement();
             String roomNum1;
             String testNum;
             ClassRoom classRoom;
+            /*roomNum不为空时候，查看指定的考试场地*/
             if(roomNum!=null)
             {
                 ptsmt=coon.prepareStatement(sql);
@@ -50,10 +54,12 @@ public class WorkerDAO {
                 rr= ptsmt.executeQuery();
             }
             else {
+                /*为空时候查看所有考试场地*/
                 rr=stmt.executeQuery(sql);
             }
             while (rr.next())
             {
+                /*遍历考试场地对象*/
                 classRoom=new ClassRoom();
                 roomNum1=rr.getString(1);
                 testNum=rr.getString(2);

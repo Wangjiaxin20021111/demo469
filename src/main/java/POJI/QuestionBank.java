@@ -3,11 +3,13 @@ package POJI;
 /**
  * @author 25043
  */
-@SuppressWarnings("all")
 public class QuestionBank {
+    /**题目种类*/
     private String kind;
+    /**题目内容*/
     private String tittle;
-    int num;
+    /**题目编号*/
+    private int num;
 
     public int getNum() {
         return num;
